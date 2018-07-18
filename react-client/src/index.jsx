@@ -1,36 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
-import Login from './components/Login';
+import AppRoute from './components/AppRoute.js';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: []
+    constructor (props) {
+        super(props);
+        this.state = {
+        };
     }
-  }
 
-  componentDidMount() {
-    $.ajax({
-      url: '/items',
-      success: (data) => {
-        this.setState({
-          items: data
-        })
-      },
-      error: (err) => {
-        console.log('err', err);
-      }
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <Login />
-      </div>)
-  }
+    render () {
+        return (
+            <div>
+                <AppRoute />
+            </div>);
+    }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
