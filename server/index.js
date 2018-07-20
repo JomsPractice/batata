@@ -92,8 +92,8 @@ app.get("/home", (req, res) => {
         if (err)
             res.send('error')
         else
-        console.log(data)
-            res.send(data)
+            console.log(data)
+        res.send(data)
     })
 })
 
@@ -114,6 +114,16 @@ app.post("/home", (req, res) => {
         res.send("data saved")
     })
 })
+
+app.post("/search", (req, res) => {
+    db.machine.findOne({ type: req.body.type, model: req.body.model }, (err, data) => {
+        if (err)
+            res.send(err)
+        else
+            res.send(data)
+    })
+})
+
 
 app.get('/*', (req, res) => {
     res.sendFile(path.resolve(path.join(__dirname, '../react-client/dist/index.html')))
