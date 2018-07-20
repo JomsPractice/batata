@@ -52,7 +52,6 @@ class Login extends React.Component {
 
     render() {
         const { classes } = this.props
-        console.log(this.state)
         return (
             <div style={{ marginBottom: "325px" }}>
                 <Grid container justify="space-around" alignItems="center" direction="column">

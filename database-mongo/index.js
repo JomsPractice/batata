@@ -22,6 +22,14 @@ let userSchema = new Schema({
   password: {type: String}
 })
 
-userSchema = mongoose.model('userSchema', userSchema);
+let machineSchema = new Schema({
+  model:String,
+  type:String,
+  underMaintainance:Boolean,
+  maintainanceDate:String
+})
 
+userSchema = mongoose.model('userSchema', userSchema);
+machine = mongoose.model('machineSchema',machineSchema)
 module.exports.userSchema = userSchema;
+module.exports.machine = machine;
