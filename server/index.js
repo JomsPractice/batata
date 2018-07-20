@@ -124,6 +124,30 @@ app.post("/search", (req, res) => {
     })
 })
 
+app.post('/delete', (req,res)=>{
+    let Id = req.body.id;
+db.machine.remove({_id: Id},  (err,data) =>{
+    if (err) {
+        throw err;
+    } else {
+        res.sendStatus(201);
+    }
+});
+
+})
+
+app.post('update', (req,res)=>{
+    let model = req.body.model
+    let type = req.body.type
+  db.machine.update({model:model},{$set: {model:model, type:type}}, (err,data)=>{
+        if(err){
+            throw err;
+        }else{
+            res.send(data);
+        }
+  });
+});
+
 
 app.get('/*', (req, res) => {
     res.sendFile(path.resolve(path.join(__dirname, '../react-client/dist/index.html')))
