@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test');
 mongoose.Promise = global.Promise;
-var db = mongoose.connection;
+const db = mongoose.connection;
 
 db.on('error', function() {
   console.log('mongoose connection error');
@@ -30,6 +30,6 @@ let machineSchema = new Schema({
 })
 
 userSchema = mongoose.model('userSchema', userSchema);
-machine = mongoose.model('machineSchema',machineSchema)
+machine = mongoose.model('machineSchema',machineSchema);
 module.exports.userSchema = userSchema;
 module.exports.machine = machine;
